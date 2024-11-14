@@ -155,15 +155,15 @@
 3. Объединение двух массивов (ConcatArrays)
 
 
-static int[] ConcatArrays(int[] a, int[] b)
-{
-    int[] c = new int[a.Length + b.Length]; //длина навого массива равна сумме длин исходных массивов
-    for (int i = 0; i < a.Length; i++) //переносим числа из массива A в масси C
-        c[i] = a[i];
-    for (int i = a.Length; i < a.Length + b.Length; i++) //переносим числа из массива B в масси C, начиная с индекса a.Length
-        c[i] = b[i - a.Length]; //не забываем, что у массива B индекс очередного элемента на a.Length меньше, чем у C!
-    return c;
-}
+        static int[] ConcatArrays(int[] a, int[] b)
+        {
+            int[] c = new int[a.Length + b.Length]; //длина навого массива равна сумме длин исходных массивов
+            for (int i = 0; i < a.Length; i++) //переносим числа из массива A в масси C
+                c[i] = a[i];
+            for (int i = a.Length; i < a.Length + b.Length; i++) //переносим числа из массива B в масси C, начиная с индекса a.Length
+                c[i] = b[i - a.Length]; //не забываем, что у массива B индекс очередного элемента на a.Length меньше, чем у C!
+            return c;
+        }
 
 
 Описание:
@@ -174,18 +174,18 @@ static int[] ConcatArrays(int[] a, int[] b)
 4. Основной метод Main
 
 
-static void Main(string[] args)
-{
-    int[] a = new int[5] { 2, 4, 5, 1, 4 };
-    int[] b = new int[5] { 9, 1, 4, -1, 2 };
-    SortAscending(a); //отсортировли первый массив по возрастанию
-    SortDescending(b); //отсортировали второй массив по убыванию
-    int[] c = ConcatArrays(a, b); //объединили массивы
-    /*Выводим итоговый массив в консоль*/
-    foreach (int i in c)
-        Console.Write($"{i} ");
-    Console.ReadKey();
-}
+        static void Main(string[] args)
+        {
+            int[] a = new int[5] { 2, 4, 5, 1, 4 };
+            int[] b = new int[5] { 9, 1, 4, -1, 2 };
+            SortAscending(a); //отсортировли первый массив по возрастанию
+            SortDescending(b); //отсортировали второй массив по убыванию
+            int[] c = ConcatArrays(a, b); //объединили массивы
+            /*Выводим итоговый массив в консоль*/
+            foreach (int i in c)
+                Console.Write($"{i} ");
+            Console.ReadKey();
+        }
 
 
 Описание:
