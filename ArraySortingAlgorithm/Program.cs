@@ -9,29 +9,9 @@ namespace ArraySortingAlgorithm
 
     class Program
     {
-        static void SortAscending(int[] intArray)
-        {
-            int indx; //переменная для хранения индекса минимального элемента массива
-            for (int i = 0; i < intArray.Length; i++) //проходим по массиву с начала и до конца
-            {
-                indx = i; //считаем, что минимальный элемент имеет текущий индекс 
-                for (int j = i; j < intArray.Length; j++) //ищем минимальный элемент в неотсортированной части
-                {
-                    if (intArray[j] < intArray[indx])
-                    {
-                        indx = j; //нашли в массиве число меньше, чем intArray[indx] - запоминаем его индекс в массиве
-                    }
-                }
-                if (intArray[indx] == intArray[i]) //если минимальный элемент равен текущему значению - ничего не меняем
-                    continue;
-                //меняем местами минимальный элемент и первый в неотсортированной части
-                int temp = intArray[i]; //временная переменная, чтобы не потерять значение intArray[i]
-                intArray[i] = intArray[indx];
-                intArray[indx] = temp;
-            }
-        }
+        enum SortParam { ASC, DESC };
 
-        static void SortDescending(int[] intArray)
+        static void SortArray(int[] intArray, SortParam sortParam)
         {
             int indx;
             for (int i = 0; i < intArray.Length; i++)
@@ -39,14 +19,15 @@ namespace ArraySortingAlgorithm
                 indx = i;
                 for (int j = i; j < intArray.Length; j++)
                 {
-                    if (intArray[j] > intArray[indx]) //заменяем знак сравнения на противоположный
+                    //ASC = по возврастанию (intArray[j] < intArray[indx])
+                    //DESC = по убыванию (intArray[j] > intArray[indx])
+                    if (((intArray[j] < intArray[indx]) && (sortParam == SortParam.ASC)) || ((intArray[j] > intArray[indx]) && (sortParam == SortParam.DESC)))
                     {
                         indx = j;
                     }
                 }
                 if (intArray[indx] == intArray[i])
                     continue;
-
                 int temp = intArray[i];
                 intArray[i] = intArray[indx];
                 intArray[indx] = temp;
@@ -63,16 +44,29 @@ namespace ArraySortingAlgorithm
             return c;
         }
 
+        static string ArrayToString(int[] array)
+        {
+            string s = string.Empty;
+            foreach (int i in array)
+                s += $"{i} ";
+            return s;
+        }
+
         static void Main(string[] args)
         {
             int[] a = new int[5] { 2, 4, 5, 1, 4 };
             int[] b = new int[5] { 9, 1, 4, -1, 2 };
-            SortAscending(a); //отсортировли первый массив по возрастанию
-            SortDescending(b); //отсортировали второй массив по убыванию
+
+            Console.WriteLine($"Исходный массив A: {ArrayToString(a)}");
+            SortArray(a, SortParam.ASC); //отсортировли первый массив по возрастанию
+            Console.WriteLine($"Отсортированный массив A: {ArrayToString(a)}");
+
+            Console.WriteLine($"Исходный массив B: {ArrayToString(b)}");
+            SortArray(b, SortParam.DESC);//отсортировали второй массив по убыванию
+            Console.WriteLine($"Отсортированный B: {ArrayToString(b)}");
+
             int[] c = ConcatArrays(a, b); //объединили массивы
-            /*Выводим итоговый массив в консоль*/
-            foreach (int i in c)
-                Console.Write($"{i} ");
+            Console.WriteLine($"Итоговый массив С: {ArrayToString(c)}");
             Console.ReadKey();
         }
     }
