@@ -11,14 +11,7 @@
 
 Рассмотрим алгоритм сортировки массива методами SortAscending и SortDescending.
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ArraySortingAlgorithm
-{
 
     class Program
     {
@@ -89,7 +82,7 @@ namespace ArraySortingAlgorithm
             Console.ReadKey();
         }
     }
-}
+
 
 
 Шаг 2: Анализ исходного кода
@@ -234,14 +227,7 @@ static void Main(string[] args)
 Пример улучшенного кода с проверкой на отсутствие изменений:
 
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ArraySortingAlgorithm
-{
 
     class Program
     {
@@ -306,5 +292,5 @@ namespace ArraySortingAlgorithm
             Console.ReadKey();
         }
     }
-}
+
 
